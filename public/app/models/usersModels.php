@@ -59,3 +59,29 @@ function findAll(\PDO $connexion)
     // Retourne le résultat sous forme de tableau associatif
     return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
+
+function findOneById(\PDO $connexion, $id)
+{
+    // Requête SQL pour récupérer un utilisateur par son ID
+    $sql = "
+        SELECT 
+            users.id AS user_id,
+            users.name AS user_name,
+            users.picture AS user_picture,
+            users.biography AS user_biography,
+            COUNT(DISTINCT dishes.id) AS total_recipes
+        FROM users
+        LEFT JOIN dishes ON users.id = dishes.user_id
+        WHERE users.id = :userId
+        LIMIT 1;      
+    ";
+
+    // Préparation et exécution de la requête
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':userId', $id, \PDO::PARAM_INT);
+    $rs->execute();
+
+    // Retourne le résultat sous forme de tableau associatif
+    return $rs->fetch(\PDO::FETCH_ASSOC);
+}
+

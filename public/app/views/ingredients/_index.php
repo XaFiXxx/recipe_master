@@ -3,7 +3,7 @@
     <li>
         <a
         class="hover:text-white hover:bg-yellow-600 px-2 block"
-        href="categories/<?php echo $ingredient['id']; ?>/<?php echo core\tools\slugify($ingredient['name']); ?>">
+        href="ingredients/<?php echo $ingredient['id']; ?>/<?php echo core\tools\slugify($ingredient['name']); ?>">
         <?php echo $ingredient['name']; ?>
         </a>
     </li>

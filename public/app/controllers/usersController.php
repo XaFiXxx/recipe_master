@@ -17,7 +17,10 @@ function indexAction(\PDO $connexion)
 function ShowAction(\PDO $connexion, int $id)
 {
     include_once '../app/models/usersModels.php';
-    //$users = \App\Models\UsersModel\findOneById($connexion, $id);
+    $user = \App\Models\UsersModel\findOneById($connexion, $id);
+
+    include_once '../app/models/dishesModels.php';
+    $dishes = \App\Models\DishesModel\findAllDishesByUserID($connexion, $id);
 
     global $title, $content;
     $title = "";

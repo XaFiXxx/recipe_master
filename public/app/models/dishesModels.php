@@ -159,3 +159,30 @@ function findAllDishesByCategoriesId(\PDO $connexion, $id)
     // Retourne les résultats sous forme de tableau associatif
     return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
+
+function findAllDishesByUserID(\PDO $connexion, $id)
+{
+    // Requête SQL pour récupérer les meilleures recettes d'un utilisateur spécifié
+    $sql = "
+        SELECT 
+            dishes.id,
+            dishes.name AS dish_name,
+            ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
+            LEFT(dishes.description, 100) AS description,
+            dishes.picture,
+            dishes.created_at
+        FROM dishes
+        LEFT JOIN ratings ON dishes.id = ratings.dish_id
+        WHERE dishes.user_id = :userId
+        GROUP BY dishes.id
+        ORDER BY created_at ASC
+    ";
+
+    // Préparation et exécution de la requête
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':userId', $id, \PDO::PARAM_INT);
+    $rs->execute();
+
+    // Retourne les résultats sous forme de tableau associatif
+    return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}
