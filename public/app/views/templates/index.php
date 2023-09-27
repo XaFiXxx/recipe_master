@@ -17,7 +17,7 @@
       <?php include '../app/views/templates/partials/_main_content.php' ?>
     </div>
 
-    <!-- ... (reste du code précédent) ... -->
+    <?php include '../app/views/templates/partials/_scripts.php' ?>
 
     <!-- Footer -->
     <?php include '../app/views/templates/partials/_footer.php' ?>

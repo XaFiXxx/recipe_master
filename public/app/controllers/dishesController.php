@@ -17,7 +17,11 @@ function indexAction(\PDO $connexion)
 function ShowAction(\PDO $connexion, int $id)
 {
     include_once '../app/models/dishesModels.php';
-    //$recettes = \App\Models\DishesModel\findOneById($connexion, $id);
+    $recettes = \App\Models\DishesModel\findBaseInformations($connexion, $id);
+    $ingredients = \App\Models\DishesModel\findIngredientsByDishes($connexion, $id);
+    $commentaries = \App\Models\DishesModel\findCommentariesByDishes($connexion, $id);
+
+
 
     global $title, $content;
     $title = "";

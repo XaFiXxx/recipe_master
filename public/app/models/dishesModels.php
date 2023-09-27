@@ -220,3 +220,82 @@ function findAllDishesByIngredientsId(\PDO $connexion, $id)
     // Retourne les résultats sous forme de tableau associatif
     return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
+
+function findBaseInformations(\PDO $connexion, int $id)
+{
+    $sql="
+        SELECT
+        r.name AS nom_recette,
+        AVG(ra.value) AS note_moyenne,
+        r.prep_time AS duree_preparation,
+        r.description AS description_recette,
+        r.picture,
+        u.name AS nom_auteur,
+        COUNT(c.dish_id) AS nombre_commentaires
+        FROM
+            dishes r
+        LEFT JOIN
+            ratings ra ON r.id = ra.dish_id
+        LEFT JOIN
+            users u ON r.user_id = u.id
+        LEFT JOIN
+            comments c ON r.id = c.dish_id
+        WHERE
+            r.id = :id;
+    ;";
+
+     // Préparation et exécution de la requête
+     $rs = $connexion->prepare($sql);
+     $rs->bindValue(':id', $id, \PDO::PARAM_INT);
+     $rs->execute();
+ 
+     // Retourne les résultats sous forme de tableau associatif
+     return $rs->fetch(\PDO::FETCH_ASSOC);
+}
+
+function findIngredientsByDishes(\PDO $connexion, int $id)
+{
+    $sql="
+        SELECT
+            i.name AS nom_ingredient,
+            di.quantity AS quantite
+        FROM
+            dishes_has_ingredients di
+        JOIN
+            ingredients i ON di.ingredient_id = i.id
+        WHERE
+            di.dish_id = :id;
+    ;";
+
+     // Préparation et exécution de la requête
+     $rs = $connexion->prepare($sql);
+     $rs->bindValue(':id', $id, \PDO::PARAM_INT);
+     $rs->execute();
+ 
+     // Retourne les résultats sous forme de tableau associatif
+     return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}
+
+function findCommentariesByDishes(\PDO $connexion, int $id)
+{
+    $sql="
+        SELECT
+        u.name AS nom_utilisateur,
+        u.picture AS picture,
+        c.content AS contenu_commentaire
+        FROM
+            comments c
+        JOIN
+            users u ON c.user_id = u.id
+        WHERE
+            c.dish_id = :id;
+    ;";
+
+     // Préparation et exécution de la requête
+     $rs = $connexion->prepare($sql);
+     $rs->bindValue(':id', $id, \PDO::PARAM_INT);
+     $rs->execute();
+ 
+     // Retourne les résultats sous forme de tableau associatif
+     return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}
