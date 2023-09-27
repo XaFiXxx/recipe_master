@@ -26,10 +26,10 @@
               >
             </div>
             <a
-              href="recipe.html"
-              class="inline-block bg-red-500 hover:bg-red-800 rounded-full px-4 py-2 text-white"
-            >
-              Voir la recette
-            </a>
+                  href="recettes/<?php echo $randomDishes['id'] ?>/<?php echo core\tools\slugify($randomDishes['dish_name']); ?>"
+                  class="inline-block mt-4 bg-red-500 hover:bg-red-800 rounded-full px-4 py-2 text-white"
+                >
+                  Voir la recette
+                </a>
           </div>
         </section>

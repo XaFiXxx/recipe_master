@@ -34,3 +34,28 @@ function getTopUser(\PDO $connexion)
     // Retourne le résultat sous forme de tableau associatif
     return $rs->fetch(\PDO::FETCH_ASSOC);
 }
+
+function findAll(\PDO $connexion)
+{
+    // Requête SQL pour récupérer tous les l'utilisateurs.
+    $sql = "
+            SELECT 
+            users.id AS user_id,
+            users.name AS user_name,
+            users.picture AS user_picture,
+            users.biography AS user_biography,
+            COUNT(DISTINCT dishes.id) AS total_recipes
+        FROM users
+        LEFT JOIN dishes ON users.id = dishes.user_id
+        GROUP BY users.id 
+        ORDER BY user_name ASC
+        LIMIT 9;      
+    ";
+
+    // Préparation et exécution de la requête
+    $rs = $connexion->prepare($sql);
+    $rs->execute();
+
+    // Retourne le résultat sous forme de tableau associatif
+    return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}

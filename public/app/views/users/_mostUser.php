@@ -56,7 +56,7 @@
                   <?php echo $topDishes['description']  ?>
                   </p>
                   <a
-                    href="recipe_detail.html"
+                    href="recettes/<?php echo $topDishes['id'] ?>/<?php echo core\tools\slugify($topDishes['dish_name']); ?>"
                     class="text-yellow-500 hover:text-yellow-600 mt-2 inline-block"
                     >Voir la recette</a>
                 </div>

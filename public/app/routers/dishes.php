@@ -5,4 +5,8 @@ switch ($_GET['recettes']):
         include_once '../app/controllers/dishesController.php';
         \App\Controllers\DishesController\indexAction($connexion);
     break;
+    case 'show':
+        include_once '../app/controllers/dishesController.php';
+        \App\Controllers\DishesController\showAction($connexion, $_GET['id']);
+        break;
 endswitch;

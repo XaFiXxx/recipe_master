@@ -6,12 +6,24 @@ RewriteEngine on
 # ROUTES DES RECETTES
 #--------------------------------------------------
 
+#Liste des recettes
 RewriteRule ^recettes$ index.php?recettes=index [L]
+
+#Détail d'une recette
+RewriteRule ^recettes\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?recettes=show&id=$1 [L]
 
 #--------------------------------------------------
 # ROUTES DES USERS
 #--------------------------------------------------
 
+#Liste des Chefs/Users
+RewriteRule ^chefs$ index.php?chefs=index [L]
+
+#--------------------------------------------------
+# ROUTES DES CATEGORIES
+#--------------------------------------------------
+
+RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?categories=show&id=$1 [L]
 
 
 # --------------------------------------------------
