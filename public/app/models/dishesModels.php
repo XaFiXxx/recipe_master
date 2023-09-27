@@ -186,3 +186,37 @@ function findAllDishesByUserID(\PDO $connexion, $id)
     // Retourne les résultats sous forme de tableau associatif
     return $rs->fetchAll(\PDO::FETCH_ASSOC);
 }
+
+function findAllDishesByIngredientsId(\PDO $connexion, $id)
+{
+    // Requête SQL pour récupérer les recettes par catégories
+    $sql = "
+    SELECT 
+        dishes.id,
+        dishes.type_id,
+        dishes.name AS dish_name,
+        ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
+        LEFT(dishes.description, 100) AS description,
+        dishes.picture,
+        dishes.created_at,
+        users.name AS user_name,
+        COUNT(comments.id) AS number_of_comments
+    FROM dishes
+    LEFT JOIN users ON dishes.user_id = users.id
+    LEFT JOIN ratings ON dishes.id = ratings.dish_id
+    LEFT JOIN comments ON dishes.id = comments.dish_id
+    LEFT JOIN dishes_has_ingredients dhi ON dishes.id = dhi.dish_id
+    WHERE dhi.ingredient_id = :id
+    GROUP BY dishes.id
+    ORDER BY dishes.created_at ASC
+    LIMIT 9;
+";
+
+    // Préparation et exécution de la requête
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':id', $id, \PDO::PARAM_INT);
+    $rs->execute();
+
+    // Retourne les résultats sous forme de tableau associatif
+    return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}

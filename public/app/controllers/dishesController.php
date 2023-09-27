@@ -25,3 +25,5 @@ function ShowAction(\PDO $connexion, int $id)
     include '../app/views/recettes/show.php';
     $content = ob_get_clean();
 }
+
+

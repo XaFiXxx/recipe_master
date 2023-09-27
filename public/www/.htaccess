@@ -29,6 +29,12 @@ RewriteRule ^chefs\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?che
 RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?categories=show&id=$1 [L]
 
 #--------------------------------------------------
+# ROUTES DES INGREDIENTS
+#--------------------------------------------------
+
+RewriteRule ^ingredients\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?ingredients=show&id=$1 [L]
+
+#--------------------------------------------------
 # ROUTES DE LOGIN
 #--------------------------------------------------
 
