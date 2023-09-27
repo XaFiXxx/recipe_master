@@ -2,6 +2,9 @@
 // 1. Charge les paramètres
 require_once '../app/config/params.php';
 
+// 2. Charge les constantes
+require_once '../core/constantes.php';
+
 // 2. Charge la connexion
 require_once '../core/connexion.php';
 

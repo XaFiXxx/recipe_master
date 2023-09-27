@@ -2,7 +2,18 @@
 RewriteEngine on
 # RewriteBase "/.../"
 
+#--------------------------------------------------
+# ROUTES DES RECETTES
+#--------------------------------------------------
+
+RewriteRule ^recettes$ index.php?recettes=index [L]
+
+#--------------------------------------------------
+# ROUTES DES USERS
+#--------------------------------------------------
+
 
 
 # --------------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]
+# RewriteRule ^(.*)$ index.php [L]

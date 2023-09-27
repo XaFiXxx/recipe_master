@@ -2,6 +2,35 @@
 
 namespace App\Models\DishesModel;
 
+function findAll(\PDO $connexion)
+{
+    // Requête SQL pour récupérer les recettes avec leurs informations associées
+    $sql = "
+        SELECT 
+            dishes.name AS dish_name,
+            ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
+            LEFT(dishes.description, 100) AS description,
+            dishes.picture,
+            dishes.created_at,
+            users.name AS user_name,
+            COUNT(comments.id) AS number_of_comments
+        FROM dishes
+        LEFT JOIN users ON dishes.user_id = users.id
+        LEFT JOIN ratings ON dishes.id = ratings.dish_id
+        LEFT JOIN comments ON dishes.id = comments.dish_id
+        GROUP BY dishes.id
+        ORDER BY dishes.created_at ASC
+        LIMIT 9;
+    ";
+
+    // Préparation et exécution de la requête
+    $rs = $connexion->prepare($sql);
+    $rs->execute();
+
+    // Retourne les résultats sous forme de tableau associatif
+    return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}
+
 /**
  * Récupère une recette aléatoire de la table dishes.
  */
