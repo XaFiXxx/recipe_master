@@ -24,7 +24,7 @@
           </span>
         </div>
         <a
-          href="chef_detail.php?user_id=<?php echo $user['user_id']; ?>"
+          href="chefs/<?php echo $user['user_id'] ?>/<?php echo core\tools\slugify($user['user_name']); ?>"
           class="inline-block mt-4 bg-red-500 hover:bg-red-800 rounded-full px-4 py-2 text-white"
         >
           Voir le détail du chef

@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 // 1. Charge les paramètres
 require_once '../app/config/params.php';
 

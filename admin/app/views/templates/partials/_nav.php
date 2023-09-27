@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">BackOffice - BOOK HUNTER</a>
+        <a class="navbar-brand" href="#">BackOffice - RECIPE_MASTER</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse flex">
         <ul class="nav navbar-nav">
@@ -45,7 +45,7 @@
             </ul>
           </li>
           <li class=""><a href="#t">Paramètres</a></li>
-          <li class=""><a href="pseudo/logout">Logout</a></li>
+          <li class=""><a href="name/logout">Logout</a></li>
         </ul>
       </div>
       <!--/.nav-collapse -->

@@ -1,5 +1,10 @@
 <?php
 
+// Fichiers et Dossiers
+define('PUBLIC_FOLDER', 'public');
+define('ADMIN_FOLDER', 'admin');
+define('DISPATCHER_NAME', 'index.php');
+
 // Initialisation des zones dynamiques
 $title = '';
 $content = '';

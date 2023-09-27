@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\UsersController;
+namespace App\Controllers\LoginController;
 
 function dashBoardAction(\PDO $connexion)
 {
@@ -12,7 +12,7 @@ function dashBoardAction(\PDO $connexion)
 }
 
 function logoutAction(){
-    unset($_SESSION['pseudo']);
-    header('location: /BES_2_23_24/SCRIPTSERVEUR_23_24/book_hunter_2023/public/public/?');
+    unset($_SESSION['name']);
+    header('location: ' . PUBLIC_ROOT);
 }
 

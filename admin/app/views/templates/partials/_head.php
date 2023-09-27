@@ -10,7 +10,7 @@
 
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 
-  <base href="http://127.0.0.1:8888/BES_2_23_24/SCRIPTSERVEUR_23_24/book_hunter_2023/admin/public/">
+  <base href="<?php echo ADMIN_ROOT; ?>">
 
   <!-- Bootstrap core CSS -->
   <!-- Font Awesome -->

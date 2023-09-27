@@ -8,7 +8,7 @@ RewriteEngine on
 # ROUTE DECO
 # PATTERN: /users/logout
 # TARGET: ?books=index
-RewriteRule ^pseudo\/logout$ index.php?pseudo=logout [L]
+RewriteRule ^name\/logout$ index.php?name=logout [L]
 
 
 # --------------------------------------------------

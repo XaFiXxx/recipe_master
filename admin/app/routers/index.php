@@ -1,11 +1,11 @@
 <?php
 // ROUTE DES USERS
 
-if (isset($_GET['pseudo'])) :
-    include_once '../app/routers/users.php';
+if (isset($_GET['name'])) :
+    include_once '../app/routers/login.php';
     
 else :
-    include_once '../app/controllers/usersController.php';
-    \App\Controllers\UsersController\dashBoardAction($connexion);
+    include_once '../app/controllers/loginController.php';
+    \App\Controllers\LoginController\dashBoardAction($connexion);
 
 endif;

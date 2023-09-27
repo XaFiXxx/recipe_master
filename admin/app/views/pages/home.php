@@ -1,5 +1,5 @@
     <div class="container mx-auto mt-8 p-4">
-        <h1 class="text-5xl font-semibold">Tableau de Bord de <?php echo  $_SESSION['pseudo']['pseudo']; ?></h1>
+        <h1 class="text-5xl font-semibold">Tableau de Bord de <?php echo  $_SESSION['name']['name']; ?></h1>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
             <!-- Widget des statistiques -->
             <div class="bg-white p-4 rounded shadow-md">

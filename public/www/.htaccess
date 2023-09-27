@@ -19,11 +19,26 @@ RewriteRule ^recettes\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?
 #Liste des Chefs/Users
 RewriteRule ^chefs$ index.php?chefs=index [L]
 
+#Détail d'un user
+RewriteRule ^chefs\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?chefs=show&id=$1 [L]
+
 #--------------------------------------------------
 # ROUTES DES CATEGORIES
 #--------------------------------------------------
 
 RewriteRule ^categories\/([1-9][0-9]*)\/([a-z0-9][a-z0-9\-]*)*[a-z0-9]$ index.php?categories=show&id=$1 [L]
+
+#--------------------------------------------------
+# ROUTES DE LOGIN
+#--------------------------------------------------
+
+# LOGIN
+RewriteRule ^login\/form$ index.php?login=form [L]
+
+# LOGIN CONNEXION
+
+RewriteRule ^login\/submit$ index.php?login=submit [L]
+
 
 
 # --------------------------------------------------
