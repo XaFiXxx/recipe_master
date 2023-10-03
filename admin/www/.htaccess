@@ -24,6 +24,22 @@ RewriteRule ^categories\/edit\/form\/([1-9][0-9]*)$ index.php?categories=editfor
 
 RewriteRule ^categories\/edit\/([1-9][0-9]*)$ index.php?categories=edit&id=$1 [L]
 
+#--------------------------------------------------
+# ROUTES DES RECETTES
+#--------------------------------------------------
+
+RewriteRule ^recettes$ index.php?recettes=index [L]
+
+RewriteRule ^recettes\/add\/form$ index.php?recettes=addform [L]
+
+RewriteRule ^recettes\/add\/insert$ index.php?recettes=add [L]
+
+RewriteRule ^recettes\/delete\/([1-9][0-9]*)$ index.php?recettes=delete&id=$1 [L]
+
+RewriteRule ^recettes\/edit\/form\/([1-9][0-9]*)$ index.php?recettes=editform&id=$1 [L]
+
+RewriteRule ^recettes\/edit\/([1-9][0-9]*)$ index.php?recettes=edit&id=$1 [L]
+
 
 # --------------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]

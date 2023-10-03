@@ -6,6 +6,9 @@ if (isset($_GET['name'])) :
 
 elseif (isset($_GET['categories'])) :
     include_once '../app/routers/categories.php';    
+
+elseif (isset($_GET['recettes'])) :
+    include_once '../app/routers/recettes.php';   
     
 else :
     include_once '../app/controllers/loginController.php';

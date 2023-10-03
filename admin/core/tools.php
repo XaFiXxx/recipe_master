@@ -43,4 +43,28 @@ function uploadImage($nomImage, $nomImageTemp) {
     // Vous pouvez ajouter d'autres logiques ici si nécessaire
 }
 
+function truncate($string, $letter_limit)
+{
+    // Vérifiez d'abord si la longueur de la chaîne est inférieure ou égale à la limite
+    if (mb_strlen($string) <= $letter_limit) {
+        return $string;
+    }
+
+    // Tronquez la chaîne pour qu'elle ait au plus la longueur spécifiée
+    $truncated_string = mb_substr($string, 0, $letter_limit);
+
+    // Recherchez l'index du dernier espace dans la chaîne tronquée
+    $last_space_index = mb_strrpos($truncated_string, ' ');
+
+    // Si un espace a été trouvé, tronquez la chaîne au dernier espace
+    if ($last_space_index !== false) {
+        $truncated_string = mb_substr($truncated_string, 0, $last_space_index);
+    }
+
+    // Ajoutez des points de suspension à la fin
+    $truncated_string .= ' ...';
+
+    return $truncated_string;
+}
+
 ?>
