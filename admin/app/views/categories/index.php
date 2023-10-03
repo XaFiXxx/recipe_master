@@ -1,4 +1,4 @@
-<div class="container mx-auto p-8">
+<div class="container mx-auto p-8 ">
         <h1><?php echo $title ?></h1>
         <!-- Bouton pour ajouter une nouvelle catégorie -->
         <div class="mb-4">

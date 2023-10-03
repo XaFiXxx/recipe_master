@@ -9,4 +9,16 @@ switch ($_GET['categories']) :
     case 'addform' : 
         CategoriesController\addFormAction($connexion);
     break;
+    case 'add' : 
+        CategoriesController\addAction($connexion);
+    break;
+    case 'delete' : 
+        CategoriesController\deleteAction($connexion, $_GET['id']);
+    break;
+    case 'editform' : 
+        CategoriesController\editFormAction($connexion, $_GET['id']);
+    break;
+    case 'edit' : 
+        CategoriesController\editAction($connexion, $_GET['id']);
+    break;
 endswitch;
