@@ -9,4 +9,8 @@ switch ($_GET['recettes']):
         include_once '../app/controllers/dishesController.php';
         \App\Controllers\DishesController\showAction($connexion, $_GET['id']);
         break;
+    case 'search':
+        include_once '../app/controllers/dishesController.php';
+        \App\Controllers\DishesController\searchAction($connexion, $_GET['search']);
+        break;
 endswitch;

@@ -12,22 +12,22 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse flex">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Tableau de Bord</a></li>
+          <li class=""><a href="#">Tableau de Bord</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-              aria-expanded="false">BOOKS <span class="caret"></span></a>
+              aria-expanded="false">Recettes <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li class="dropdown-header">GESTION DES BOOKS</li>
-              <li><a href="books">Liste des books</a></li>
-              <li><a href="books/add/form">Ajouter un book</a></li>
+              <li class="dropdown-header">GESTION DES RECETTES</li>
+              <li><a href="recettes">Liste des recettes</a></li>
+              <li><a href="recettes/add/form">Ajouter une recette</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">GESTION DES CATÉGORIES</li>
               <li><a href="categories">Liste des catégories</a></li>
               <li><a href="categories/add/form">Ajouter une catégorie</a></li>
               <li role="separator" class="divider"></li>
-              <li class="dropdown-header">GESTION DES TAGS</li>
-              <li><a href="tags">Liste des tags</a></li>
-              <li><a href="tags/add/form">Ajouter un tag</a></li>
+              <li class="dropdown-header">GESTION DES INGREDIENTS</li>
+              <li><a href="ingredients">Liste des ingrédients</a></li>
+              <li><a href="ingredients/add/form">Ajouter un ingrédient</a></li>
               <li role="separator" class="divider"></li>
             </ul>
           </li>

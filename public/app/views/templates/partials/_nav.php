@@ -1,14 +1,15 @@
 <nav class="shadow-md">
             <div class="hidden md:flex items-center space-x-4">
+              <form action="recettes/search">
               <input
                 type="text"
+                name="search"
                 placeholder="Rechercher une recette..."
                 class="p-2 rounded-md"/>
-                <a
-                class="text-white hover:text-yellow-500 px-3 py-2"
-                href="?"
+              </form>
+              
+                <a class="text-white hover:text-yellow-500 px-3 py-2" href="?"
                 >Acceuil</a>
-              <a>
               <a
                 class="text-white hover:text-yellow-500 px-3 py-2"
                 href="recettes"

@@ -3,12 +3,26 @@ RewriteEngine on
 # RewriteBase "/.../"
 
 #--------------------------------------------------
-# ROUTES DES USERS
+# ROUTES DES USERS/DECONNEXION
 #--------------------------------------------------
-# ROUTE DECO
-# PATTERN: /users/logout
-# TARGET: ?books=index
+
 RewriteRule ^name\/logout$ index.php?name=logout [L]
+
+#--------------------------------------------------
+# ROUTES DES CATEGORIES
+#--------------------------------------------------
+
+RewriteRule ^categories$ index.php?categories=index [L]
+
+RewriteRule ^categories\/add\/form$ index.php?categories=addform [L]
+
+RewriteRule ^categories\/add\/insert$ index.php?categories=add [L]
+
+RewriteRule ^categories\/delete\/([1-9][0-9]*)$ index.php?categories=delete&id=$1 [L]
+
+RewriteRule ^categories\/edit\/form\/([1-9][0-9]*)$ index.php?categories=editform&id=$1 [L]
+
+RewriteRule ^categories\/edit\/([1-9][0-9]*)$ index.php?categories=edit&id=$1 [L]
 
 
 # --------------------------------------------------

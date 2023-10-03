@@ -23,7 +23,7 @@
                   ></span>
                   <span><?php echo $recette['average_rating'] ?></span>
                 </div>
-                <p class="text-gray-600"><?php echo $recette['description'] ?></p>
+                <p class="text-gray-600"><?php echo core\tools\truncate($recette['description'], 160); ?></p>
                 <div class="flex items-center mt-4">
                   <span class="text-gray-700 mr-2">Par <?php echo $recette['user_name'] ?></span>
                   <span class="text-gray-500"

@@ -43,7 +43,7 @@
                       <span><?php echo $dish['average_rating']  ?></span>
                     </div>
                     <p class="text-gray-600">
-                    <?php echo $dish['description']  ?>
+                    <?php echo core\tools\truncate($dish['description'], 160); ?>
                     </p>
                     <a
                       href="recettes/<?php echo $dish['id'] ?>/<?php echo core\tools\slugify($dish['dish_name']); ?>"

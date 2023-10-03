@@ -53,7 +53,7 @@
                     <span>4.5</span>
                   </div>
                   <p class="text-gray-500">
-                  <?php echo $topDishes['description']  ?>
+                  <?php echo core\tools\truncate($topDishes['description'], 160); ?>
                   </p>
                   <a
                     href="recettes/<?php echo $topDishes['id'] ?>/<?php echo core\tools\slugify($topDishes['dish_name']); ?>"

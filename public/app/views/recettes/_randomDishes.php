@@ -17,7 +17,7 @@
               <span class="text-white"><?php echo  $randomDishes['average_rating']; ?></span>
             </div>
             <p class="text-gray-300 mb-4">
-            <?php echo  $randomDishes['description']; ?>
+            <?php echo core\tools\truncate($randomDishes['description'], 360);?>
             </p>
             <div class="flex items-center mb-4">
               <span class="text-gray-400 mr-2"><?php echo  $randomDishes['user_name']; ?></span>

@@ -7,7 +7,8 @@ function indexAction(\PDO $connexion)
     include_once '../app/models/dishesModels.php';
     $recettes = \App\Models\DishesModel\findAll($connexion);
 
-    global $title, $content;
+    global $title, $content, $scripts;
+    $scripts .= '<script src="js/olders/index.js"></script>';
     $title = "";
     ob_start();
     include '../app/views/recettes/index.php';
@@ -25,6 +26,17 @@ function ShowAction(\PDO $connexion, int $id)
 
     global $title, $content;
     $title = "";
+    ob_start();
+    include '../app/views/recettes/show.php';
+    $content = ob_get_clean();
+}
+
+function searchAction(\PDO $connexion, string $search)
+{
+   
+
+    global $title, $content;
+    $title = "Résultat pour";
     ob_start();
     include '../app/views/recettes/show.php';
     $content = ob_get_clean();

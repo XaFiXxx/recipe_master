@@ -45,6 +45,13 @@ RewriteRule ^login\/form$ index.php?login=form [L]
 
 RewriteRule ^login\/submit$ index.php?login=submit [L]
 
+#--------------------------------------------------
+# ROUTES DE LA BARRE DE RECHERCHE
+#--------------------------------------------------
+
+# LOGIN
+RewriteRule ^recettes\/search$ index.php?recettes=search [L]
+
 
 
 # --------------------------------------------------

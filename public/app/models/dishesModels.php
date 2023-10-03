@@ -10,7 +10,7 @@ function findAll(\PDO $connexion)
             dishes.id,
             dishes.name AS dish_name,
             ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
-            LEFT(dishes.description, 100) AS description,
+            dishes.description AS description,
             dishes.picture,
             dishes.created_at,
             users.name AS user_name,
@@ -43,7 +43,7 @@ function randOneDishes(\PDO $connexion)
             dishes.id,
             dishes.name AS dish_name,
             ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
-            LEFT(dishes.description, 250) AS description,
+            dishes.description AS description,
             dishes.picture,
             users.name AS user_name,
             COUNT(comments.id) AS number_of_comments
@@ -75,7 +75,7 @@ function findPopularDishes(\PDO $connexion)
             dishes.id,
             dishes.name AS dish_name,
             ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
-            LEFT(dishes.description, 100) AS description,
+            dishes.description AS description,
             dishes.picture,
             users.name AS user_name,
             COUNT(comments.id) AS number_of_comments
@@ -107,7 +107,7 @@ function getTopDishesByUserID(\PDO $connexion, $topUser)
             dishes.id,
             dishes.name AS dish_name,
             COALESCE(AVG(ratings.value), 0) AS average_rating,
-            LEFT(dishes.description, 100) AS description,
+            dishes.description AS description,
             dishes.picture
         FROM dishes
         LEFT JOIN ratings ON dishes.id = ratings.dish_id
@@ -135,7 +135,7 @@ function findAllDishesByCategoriesId(\PDO $connexion, $id)
             dishes.type_id,
             dishes.name AS dish_name,
             ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
-            LEFT(dishes.description, 100) AS description,
+            dishes.description AS description,
             dishes.picture,
             dishes.created_at,
             users.name AS user_name,
@@ -168,7 +168,7 @@ function findAllDishesByUserID(\PDO $connexion, $id)
             dishes.id,
             dishes.name AS dish_name,
             ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
-            LEFT(dishes.description, 100) AS description,
+            dishes.description AS description,
             dishes.picture,
             dishes.created_at
         FROM dishes
@@ -196,7 +196,7 @@ function findAllDishesByIngredientsId(\PDO $connexion, $id)
         dishes.type_id,
         dishes.name AS dish_name,
         ROUND(COALESCE(AVG(ratings.value), 0), 2) AS average_rating,
-        LEFT(dishes.description, 100) AS description,
+        dishes.description AS description,
         dishes.picture,
         dishes.created_at,
         users.name AS user_name,
