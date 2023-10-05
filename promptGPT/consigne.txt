@@ -16,7 +16,8 @@ Contenus dynamiques obligatoires
 
   - Connexion sécurisé au backoffice avec mots de passe cryptés --------- OK 
 
-  - Ajouter/modifier/Supprimer des catégories et des recettes avec user (menu déroulant), catégorie (menu déroulant) et ingrédients (cases à cocher) (pas d'upload de l'image)
+  - Ajouter/modifier/Supprimer des catégories --------- OK
+  et des recettes avec user (menu déroulant), catégorie (menu déroulant) et ingrédients (cases à cocher) (pas d'upload de l'image)
 
 
 Contenu dynamiques facultatifs

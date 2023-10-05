@@ -14,3 +14,48 @@ function indexAction(\PDO $connexion)
     include '../app/views/recettes/index.php';
     $content = ob_get_clean();
 }
+
+function addFormAction(\PDO $connexion)
+{
+    include_once '../app/models/usersModels.php';
+    $chefs = \App\Models\UsersModels\findAll($connexion);
+
+    include_once '../app/models/categoriesModels.php';
+    $categories = \App\Models\CategoriesModels\findAll($connexion);
+
+    include_once '../app/models/ingredientsModels.php';
+    $ingredients = \App\Models\IngredientsModels\findAll($connexion);
+
+    global $content, $title;
+    $title = "Liste des enregistrements";
+    ob_start();
+    include '../app/views/recettes/ajout.php';
+    $content = ob_get_clean();
+}
+
+function addAction(\PDO $connexion) 
+{
+    include_once '../core/tools.php';
+    
+    //Vérifier si une image a été téléchargée
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] === UPLOAD_ERR_OK) {
+        $imageName = $_FILES['picture']['name'];
+        $imageTemp = $_FILES['picture']['tmp_name'];
+        
+        // Appeler la fonction uploadImage pour gérer le téléchargement de l'image
+        \core\tools\uploadImage($imageName, $imageTemp);
+    }
+
+    include_once '../app/models/recettesModels.php';
+    $id = RecettesModels\insert($connexion, $_POST);
+
+    include_once '../app/models/ingredientsModels.php';
+    foreach ($_POST['ingredient'] as $ingredientID){
+        $return = \App\Models\IngredientsModels\insertIngredientsByID($connexion, [
+            'recetteID' => $id,
+            'ingredientID' => $ingredientID
+        ]);
+    }
+
+    header ('location: ' . ADMIN_ROOT . 'recettes');
+}

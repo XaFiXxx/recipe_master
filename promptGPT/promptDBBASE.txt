@@ -1,72 +1,5 @@
------------1
-Voici le code d'une card qui affiche une recette aléatoire : <section class="relative mb-6">
-          <img
-            class="w-full h-96 object-cover"
-            src="<?php echo $randomDishes['picture'];  ?>"
-            alt="Featured Recipe Image"
-          />
-          <div
-            class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-gray-900 to-transparent"
-          >
-            <h1 class="text-3xl font-bold mb-2 text-white">
-              <?php echo  $randomDishes['dish_name']; ?>
-            </h1>
-            <div class="flex items-center mb-4">
-              <span class="text-yellow-500 mr-1"
-                ><i class="fas fa-star"></i
-              ></span>
-              <span class="text-white"><?php echo  $randomDishes['average_rating']; ?></span>
-            </div>
-            <p class="text-gray-300 mb-4">
-            <?php echo  $randomDishes['description']; ?>
-            </p>
-            <div class="flex items-center mb-4">
-              <span class="text-gray-400 mr-2"><?php echo  $randomDishes['user_name']; ?></span>
-              <span class="text-gray-500"
-                ><i class="fas fa-comment"></i> <?php echo  $randomDishes['number_of_comments']; ?> commentaires</span
-              >
-            </div>
-            <a
-              href="recipe.html"
-              class="inline-block bg-red-500 hover:bg-red-800 rounded-full px-4 py-2 text-white"
-            >
-              Voir la recette
-            </a>
-          </div>
-        </section>
-le problème est que la description est trop longue, comment pourrais-je faire pour limité la taille de celle-ci en SQL? 
 
----------2
 
-fais moi un formulaire de connexion au backOffice mais je veux que ce ressemble au travail d'un pro et que tu reste dans le thème du site actuel
-
---------3
-CREATE DATABASE  IF NOT EXISTS `recipe_master` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `recipe_master`;
--- MySQL dump 10.13  Distrib 8.0.24, for macos11 (x86_64)
---
--- Host: 127.0.0.1    Database: recipe_master
--- ------------------------------------------------------
--- Server version	5.7.39
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `comments`
---
-
-DROP TABLE IF EXISTS `comments`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `comments` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `content` text NOT NULL,
@@ -81,11 +14,33 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
 --
--- Dumping data for table `comments`
+-- Table structure for table `dishes`
 --
 
+DROP TABLE IF EXISTS `dishes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `dishes` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `prep_time` varchar(45) DEFAULT NULL,
+  `portions` tinyint(3) unsigned DEFAULT NULL,
+  `picture` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `type_id` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_dishes_users_idx` (`user_id`),
+  KEY `fk_dishes_types_of_dishes_idx` (`type_id`),
+  CONSTRAINT `fk_dishes_types_of_dishes` FOREIGN KEY (`type_id`) REFERENCES `types_of_dishes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_dishes_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
 
 --
 -- Table structure for table `dishes_has_ingredients`
@@ -106,6 +61,7 @@ CREATE TABLE `dishes_has_ingredients` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
 
 --
 -- Table structure for table `ingredients`
@@ -123,7 +79,7 @@ CREATE TABLE `ingredients` (
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
+--
 
 --
 -- Table structure for table `ratings`
@@ -145,7 +101,7 @@ CREATE TABLE `ratings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
+--
 
 --
 -- Table structure for table `types_of_dishes`
@@ -162,6 +118,8 @@ CREATE TABLE `types_of_dishes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 
 --
 -- Table structure for table `users`
@@ -183,30 +141,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
-
--------------4
-
-
-SELECT
-    r.name AS nom_recette,
-    AVG(ra.value) AS note_moyenne,
-    r.preparation_time AS duree_preparation,
-    r.description AS description_recette,
-    u.name AS nom_auteur,
-    COUNT(c.id) AS nombre_commentaires
-FROM
-    dishes r
-LEFT JOIN
-    ratings ra ON r.id = ra.dish_id
-LEFT JOIN
-    users u ON r.user_id = u.id
-LEFT JOIN
-    comments c ON r.id = c.dish_id
-WHERE
-    r.id = <ID_DE_LA_RECETTE>;
-
-
-
--------------------------------------------------------------------- FORMULAIRE AJOUT RECETTE
-
-peux-tu me refaire ce formulaire en gardant mon code déjà présent et la mise en page. Mais il faudrait rajouter un bouton de type number après le temps de préparation pour le nombre de portions et pour  les ingrédients qui est une table nm il faudrait rajouter un bouton pour que l'on puisse ajouté une quantité par ingrédients. 
+--

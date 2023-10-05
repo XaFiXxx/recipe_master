@@ -1,7 +1,7 @@
 <div class="container mt-5">
-        <h1>Liste des Livres</h1>
+        <h1>Liste des recettes</h1>
         <div class="mb-4">
-            <a href="books/add/form" class="btn btn-primary">Ajouter un books</a>
+            <a href="recettes/add/form" class="btn btn-primary">Ajouter une recette</a>
         </div>
         <table class="table table-striped">
             <thead>

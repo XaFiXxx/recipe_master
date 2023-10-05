@@ -1,7 +1,7 @@
 <section class="relative mb-6">
           <img
             class="w-full h-96 object-cover"
-            src="<?php echo $randomDishes['picture'];  ?>"
+            src="pictures/<?php echo $randomDishes['picture'];  ?>"
             alt="Featured Recipe Image"
           />
           <div

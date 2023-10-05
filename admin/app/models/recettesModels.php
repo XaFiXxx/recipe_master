@@ -14,7 +14,29 @@ function findAll(\PDO $connexion): array
             JOIN users us ON d.user_id = us.id
             JOIN types_of_dishes tod ON d.type_id = tod.id
             GROUP BY d.id
-            ORDER BY d.created_at ASC;";
+            ORDER BY d.created_at DESC;";
     $rs = $connexion->query($sql);
     return $rs->fetchAll(\PDO::FETCH_ASSOC);
+}
+
+function insert(\PDO $connexion,) :int {
+    $sql = "INSERT INTO dishes
+            SET name = :name,
+                description = :description,
+                prep_time = :prep_time,
+                portions = :portions,
+                picture = :picture,
+                user_id = :userId,
+                type_id = :typeId;
+    ";
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':name', $_POST['name'], \PDO::PARAM_STR);
+    $rs->bindValue(':description', $_POST['description'], \PDO::PARAM_STR);
+    $rs->bindValue(':prep_time', $_POST['prep_time'], \PDO::PARAM_STR);
+    $rs->bindValue(':portions', $_POST['portions'], \PDO::PARAM_INT);
+    $rs->bindValue(':picture', $_FILES['picture']['name'], \PDO::PARAM_STR);
+    $rs->bindValue(':userId', $_POST['userId'], \PDO::PARAM_INT);
+    $rs->bindValue(':typeId', $_POST['typeId'], \PDO::PARAM_INT);
+    $rs->execute();
+    return $connexion->lastInsertId();
 }

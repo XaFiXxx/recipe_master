@@ -12,7 +12,7 @@
             >
               <img
                 class="w-full h-48 object-cover"
-                src="<?php echo $recette['picture'] ?>"
+                src="pictures/<?php echo $recette['picture'] ?>"
                 alt="Recipe Image"
               />
               <div class="p-4">

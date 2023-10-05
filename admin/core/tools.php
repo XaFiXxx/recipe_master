@@ -30,7 +30,7 @@ function slugify($str, $delimiter = '-')
 
 function uploadImage($nomImage, $nomImageTemp) {
     // On détermine un répertoire où télécharger l'image (chemin relatif)
-    $dossierUpload = "../../public/www/images/";
+    $dossierUpload = "../../public/www/pictures/";
     
     // Vérifiez si le répertoire de destination existe, sinon, créez-le
     if (!file_exists($dossierUpload)) {

@@ -20,7 +20,7 @@ function findAll(\PDO $connexion)
         LEFT JOIN ratings ON dishes.id = ratings.dish_id
         LEFT JOIN comments ON dishes.id = comments.dish_id
         GROUP BY dishes.id
-        ORDER BY dishes.created_at ASC
+        ORDER BY dishes.created_at DESC
         LIMIT 9;
     ";
 

@@ -4,7 +4,7 @@
           <!-- Recipe Image -->
           <img
             class="w-full h-96 object-cover rounded-t-lg"
-            src="<?php echo $recettes['picture'];  ?>"
+            src="pictures/<?php echo $recettes['picture'];  ?>"
             alt="Nom de la recette"
           />
 
