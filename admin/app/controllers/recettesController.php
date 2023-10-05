@@ -59,3 +59,30 @@ function addAction(\PDO $connexion)
 
     header ('location: ' . ADMIN_ROOT . 'recettes');
 }
+
+function deleteAction(\PDO $connexion, int $id)
+{
+    include_once '../app/models/ingredientsModels.php';
+    $return1 = intval(\App\Models\IngredientsModels\deleteIngredientsHasDish($connexion, $id));
+
+    include_once '../app/models/recettesModels.php';
+    $return2 = intval(\App\Models\RecettesModels\delete($connexion, $id));
+
+
+    header ('location: ' . ADMIN_ROOT . 'recettes');
+}
+
+function editFormAction(\PDO $connexion, int $id) 
+{
+
+
+    // include_once '../app/models/categoriesModel.php';
+    // $categories = \App\Models\CategoriesModel\findAll($connexion);
+
+
+    GLOBAL $content, $title;
+    $title = "Formulaire d'Edition";
+    ob_start();
+    include '../app/views/recettes/edit.php';
+    $content = ob_get_clean();
+}

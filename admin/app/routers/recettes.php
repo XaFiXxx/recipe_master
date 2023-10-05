@@ -15,4 +15,7 @@ switch ($_GET['recettes']) :
     case 'delete' : 
         RecettesController\deleteAction($connexion, $_GET['id']);
     break;
+    case 'editform' : 
+        RecettesController\editFormAction($connexion, $_GET['id']);
+    break;
 endswitch;

@@ -20,7 +20,7 @@
             <tbody>
                 <?php foreach ($recettes as $recette): ?>
                     <tr>
-                    <td><?php echo $recette['id']; ?></td>
+                    <td><?php echo $recette['recID']; ?></td>
                     <td><?php echo $recette['recName']; ?></td>
                     <td><?php echo core\tools\truncate($recette['recDescription'], 160); ?></td>
                     <td><?php echo $recette['prep_time']; ?></td>
@@ -30,8 +30,8 @@
                     <td><?php echo $recette['userName']; ?></td>
                     <td><?php echo $recette['catName']; ?></td>
                     <td class="p-3">
-                        <a href="recettes/edit/form/<?php echo $recette['id']; ?>" class="text-blue-600 hover:underline mr-2">Modifier</a>
-                        <a href="recettes/delete/<?php echo $recette['id']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')" class="text-red-600 hover:underline">Supprimer</a>
+                        <a href="recettes/edit/form/<?php echo $recette['recID']; ?>" class="text-blue-600 hover:underline mr-2">Modifier</a>
+                        <a href="recettes/delete/<?php echo $recette['recID']; ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')" class="text-red-600 hover:underline">Supprimer</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

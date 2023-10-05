@@ -21,3 +21,12 @@ function insertIngredientsByID(\PDO $connexion, array $data){
      $rs->bindValue(':ing', $data['ingredientID'], \PDO::PARAM_INT);
      return $rs->execute();
 }
+
+function deleteIngredientsHasDish(\PDO $connexion, int $id) {
+    $sql = "DELETE  FROM  dishes_has_ingredients
+                    WHERE dish_id = :recetteID
+    ;";
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':recetteID', $id, \PDO::PARAM_INT);
+    return $rs->execute();
+}

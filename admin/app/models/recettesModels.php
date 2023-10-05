@@ -5,6 +5,7 @@ namespace App\Models\RecettesModels;
 function findAll(\PDO $connexion): array
 {
     $sql = "SELECT *, 
+                    d.id AS recID,
                     tod.name AS catName,
                     us.name AS userName,
                     d.name AS recName,
@@ -39,4 +40,13 @@ function insert(\PDO $connexion,) :int {
     $rs->bindValue(':typeId', $_POST['typeId'], \PDO::PARAM_INT);
     $rs->execute();
     return $connexion->lastInsertId();
+}
+
+function delete(\PDO $connexion, int $id) {
+    $sql = "DELETE  FROM  dishes
+                    WHERE id = :id
+    ;";
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':id', $id, \PDO::PARAM_INT);
+    return $rs->execute();
 }
