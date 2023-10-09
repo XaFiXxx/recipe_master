@@ -258,7 +258,8 @@ function findIngredientsByDishes(\PDO $connexion, int $id)
     $sql="
         SELECT
             i.name AS nom_ingredient,
-            di.quantity AS quantite
+            di.quantity AS quantite,
+            i.unit AS unite
         FROM
             dishes_has_ingredients di
         JOIN

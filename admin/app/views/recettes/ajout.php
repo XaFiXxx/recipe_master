@@ -13,7 +13,7 @@
 
             <div class="mb-4">
                 <label for="description" class="block text-gray-700 font-semibold">Description :</label>
-                <input type="text" id="description" name="description" class="mt-2 px-4 py-2 w-full md:w-2/5 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                <textarea id="description" name="description" class="mt-2 h-96 px-4 py-2 w-full md:w-2/5 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"></textarea>
             </div>
 
             <div class="mb-4">
@@ -62,13 +62,11 @@
                                 <input type="checkbox" id="ingredient_<?php echo $ingredient['id']; ?>" name="ingredient[]" value="<?php echo $ingredient['id']; ?>" class="form-radio text-blue-500">
                                 <span class="ml-2"><?php echo $ingredient['name']; ?></span>
                             </label>
-                            <input type="text" id="quantity_<?php echo $ingredient['id']; ?>" name="quantities" class="mt-2 px-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Quantité">
+                            <input type="number" id="quantity_<?php echo $ingredient['id']; ?>" name="quantite_<?php echo $ingredient['id']; ?>" class="mt-2 px-4 py-2 w-full border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" placeholder="Quantité">
                         </div>
                     <?php endforeach; ?>
                 </div>
             </div>
-
-            <!-- Vous pouvez ajouter d'autres champs ici si nécessaire -->
 
             <div class="mt-6">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Valider</button>

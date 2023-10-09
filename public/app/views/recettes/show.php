@@ -36,7 +36,7 @@
             <h2 class="text-2xl font-bold mb-4">Ingrédients</h2>
             <?php foreach ($ingredients as $ingredient) :  ?>
             <ul class="list-disc pl-5">
-              <li><?php echo $ingredient['nom_ingredient']  ?></li>
+              <li><?php echo $ingredient['quantite'] . ' ' . $ingredient['unite'] . ' de ' . $ingredient['nom_ingredient']; ?></li>
             </ul>
             <?php endforeach;  ?>
           </div>
@@ -60,7 +60,6 @@
               </p>
             </div>
             <?php endforeach; ?>
-            <!-- ... (autres commentaires) ... -->
           </div>
         </section>
       </main>
