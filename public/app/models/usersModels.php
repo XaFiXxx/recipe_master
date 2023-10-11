@@ -48,7 +48,7 @@ function findAll(\PDO $connexion)
         FROM users
         LEFT JOIN dishes ON users.id = dishes.user_id
         GROUP BY users.id 
-        ORDER BY user_name ASC
+        ORDER BY user_id desc
         LIMIT 9;      
     ";
 

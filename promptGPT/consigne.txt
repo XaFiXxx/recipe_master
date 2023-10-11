@@ -33,4 +33,4 @@ Contenu dynamiques facultatifs
   - Lien des catégories ------------ OK 
   - Lien des ingrédients --------------OK 
   - CRUD de toutes les tables sauf 'comments'
-  - Upload des images dans le backoffice ---------OK 
+  - Upload des images dans le backoffice ---------PAS OK 

@@ -40,6 +40,22 @@ RewriteRule ^recettes\/edit\/form\/([1-9][0-9]*)$ index.php?recettes=editform&id
 
 RewriteRule ^recettes\/edit\/([1-9][0-9]*)$ index.php?recettes=edit&id=$1 [L]
 
+#--------------------------------------------------
+# ROUTES DES USERS
+#--------------------------------------------------
+
+RewriteRule ^users$ index.php?users=index [L]
+
+RewriteRule ^users\/add\/form$ index.php?users=addform [L]
+
+RewriteRule ^users\/add\/insert$ index.php?users=add [L]
+
+RewriteRule ^users\/delete\/([1-9][0-9]*)$ index.php?users=delete&id=$1 [L]
+
+RewriteRule ^users\/edit\/form\/([1-9][0-9]*)$ index.php?users=editform&id=$1 [L]
+
+RewriteRule ^users\/edit\/([1-9][0-9]*)$ index.php?users=edit&id=$1 [L]
+
 
 # --------------------------------------------------
 RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|zip|png|pdf)$ [NC]

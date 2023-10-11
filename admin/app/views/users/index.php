@@ -7,19 +7,23 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>pseudo</th>
-                    <th>email</th>
-                    <th>password</th>
-                    <th>created_at</th>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Biographie</th>
+                    <th>Image</th>
+                    <th>Created_at</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user): ?>
                     <tr>
                     <td><?php echo $user['id']; ?></td>
-                    <td><?php echo $user['pseudo']; ?></td>
+                    <td><?php echo $user['name']; ?></td>
                     <td><?php echo $user['email']; ?></td>
                     <td><?php echo $user['password']; ?></td>
+                    <td><?php echo $user['biography']; ?></td>
+                    <td><?php echo $user['picture']; ?></td>
                     <td><?php echo $user['created_at']; ?></td>
                     <td class="p-3">
                         <a href="users/edit/form/<?php echo $user['id']; ?>" class="text-blue-600 hover:underline mr-2">Modifier</a>
